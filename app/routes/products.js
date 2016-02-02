@@ -14,7 +14,7 @@ module.exports = function(app) {
     res.render('products/form');
   });
 
-  app.post('/products/save', function(req, res){
+  app.post('/products', function(req, res){
     var connection = app.infra.connectionFactory();
     var productsDAO = new app.infra.ProductsDAO(connection);
     productsDAO.save(req.body, function(error, result){
