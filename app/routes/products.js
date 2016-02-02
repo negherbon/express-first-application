@@ -3,8 +3,15 @@ module.exports = function(app) {
     var connection = app.infra.connectionFactory();
     var productsDAO = new app.infra.ProductsDAO(connection);
     productsDAO.list(function(error, results){
-      res.render('products/list', {
-        products: results
+      res.format({
+        html: function() {
+          res.render('products/list', {
+            products: results
+          });
+        },
+        json: function() {
+          res.json(results);
+        }
       });
     });
     connection.end();
