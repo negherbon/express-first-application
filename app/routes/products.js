@@ -22,9 +22,10 @@ module.exports = function(app) {
   });
 
   app.post('/products', function(req, res){
+    var product = req.body;
     var connection = app.infra.connectionFactory();
     var productsDAO = new app.infra.ProductsDAO(connection);
-    productsDAO.save(req.body, function(error, result){
+    productsDAO.save(product, function(error, result){
       res.redirect('/products');
     });
   });
