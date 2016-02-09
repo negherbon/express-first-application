@@ -14,15 +14,17 @@
     <form action="/products" method="post">
       <div>
         <label>Título</label>
-        <input type="text" name="title" placeholder="Coloque o título" />
+        <input type="text" name="title" value="<%=product.title%>" placeholder="Coloque o título" />
       </div>
       <div>
         <label>Preço</label>
-        <input type="text" name="price" placeholder="150.25" />
+        <input type="text" name="price" value="<%=product.price%>" placeholder="150.25" />
       </div>
       <div>
         <label>Descrição</label>
-        <textarea name="description" placeholder="Fale sobre o livro" cols="10" rows="10"></textarea>
+        <textarea name="description" placeholder="Fale sobre o livro" cols="10" rows="10">
+          <%=product.description%>
+        </textarea>
       </div>
       <input type="submit" value="Gravar" />
     </form>

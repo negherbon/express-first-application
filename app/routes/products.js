@@ -18,7 +18,11 @@ module.exports = function(app) {
   });
 
   app.get('/products/new', function(req, res){
-    res.render('products/form');
+    res.render('products/form', {
+      validationErrors: {},
+      product: {}
+    }
+    );
   });
 
   app.post('/products', function(req, res){
@@ -27,9 +31,18 @@ module.exports = function(app) {
     req.assert('price', 'Format invalid').isFloat();
     var errors = req.validationErrors();
     if (errors){
-      res.render('products/form', {
-        validationErrors: errors
+      res.format({
+        html: function() {
+          res.status(200).render('products/form', {
+            validationErrors: errors,
+            product: product
+          });
+        },
+        json: function() {
+          res.status(400).json(errors);
+        }
       });
+
       return;
     }
     var connection = app.infra.connectionFactory();
