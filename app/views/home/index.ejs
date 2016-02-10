@@ -1,0 +1,16 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>PDI - Node + Express</title>
+</head>
+<body>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on('newPromotion', function(data) {
+        alert('New promotion ' + data.product.id);
+      });
+    </script>
+</body>
+</html>

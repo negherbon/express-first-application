@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <div>
+      <form action="/promoticons" method="post">
+        <div>
+          <input type="text" name="message" />
+        </div>
+        <select name="product[id]">
+          <% for(var i=0; i<products.length; i++) { %>
+            <option value="<%= products[i].id %>"><%= products[i].title %></option>
+          <% } %>
+        </select>
+
+        <input type="submit" value="Insert" />
+      </form>
+    </div>
+  </body>
+</html>
